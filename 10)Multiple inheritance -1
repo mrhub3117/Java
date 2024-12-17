@@ -1,0 +1,11 @@
+class C{
+    static int x = 10;
+}
+interface I{
+    int y = 20;
+}
+class Main extends C implements I{
+    public static void main(String []b){
+        System.out.println("multiplication:"+(x*y));
+    }
+}

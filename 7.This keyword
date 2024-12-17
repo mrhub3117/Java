@@ -1,0 +1,14 @@
+class square{
+    int n;
+    int sqval(int n){
+        this.n=n;
+        return n*n;
+    }
+}
+class Main extends square{
+    public static void main(String []b){
+        Main v = new Main();
+        
+        System.out.println("Square of val:"+v.sqval(3));
+    }
+}

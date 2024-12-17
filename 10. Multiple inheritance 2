@@ -1,0 +1,28 @@
+interface Multipliable {
+    int multiply(int a, int b);
+}
+
+interface Displayable {
+    void display(int result);
+}
+class Calculator implements Multipliable, Displayable {
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+
+    
+    public void display(int result) {
+        System.out.println("The result is: " + result);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+        
+        int a = 5;
+        int b = 3;
+        int result = calculator.multiply(a, b);
+        
+        calculator.display(result);
+    }
+}

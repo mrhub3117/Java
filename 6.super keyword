@@ -1,0 +1,14 @@
+class Fruit{
+    String color;
+}
+class Apple extends Fruit{
+     Apple(){
+        super.color="Red";
+    }
+}
+class Main{
+    public static void main(String []b){
+        Apple a= new Apple();
+        System.out.println("color:"+a.color);
+    }
+}

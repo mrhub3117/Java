@@ -1,0 +1,20 @@
+class Outerclass {
+    int x = 10;
+
+    class Innerclass {
+        int y = 5;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        
+        Outerclass out = new Outerclass();
+        
+      
+        Outerclass.Innerclass in = out.new Innerclass();
+        
+        
+        System.out.println("Addition: " + (in.y + out.x));
+    }
+}

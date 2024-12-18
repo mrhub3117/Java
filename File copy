@@ -1,0 +1,21 @@
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) {
+        String sourceFile = "source.txt";  // Specify the source file path
+        String destinationFile = "destination.txt";  // Specify the destination file path
+        
+        try (FileInputStream fis = new FileInputStream(sourceFile);
+             FileOutputStream fos = new FileOutputStream(destinationFile)) {
+
+            int byteData;
+            // Read from source file and write to destination file byte by byte
+            while ((byteData = fis.read()) != -1) {
+                fos.write(byteData);
+            }
+            System.out.println("File copied successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

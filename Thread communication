@@ -1,0 +1,57 @@
+class BankAccount {
+    private double balance;
+    private boolean isAvailable = false;
+
+    public BankAccount(double balance) {
+        this.balance = balance;
+    }
+
+    // Deposit method (Producer)
+    public synchronized void deposit(double amount) {
+        while (isAvailable) {
+            try {
+                wait();  // Wait until consumer withdraws
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        balance += amount;
+        System.out.println("Deposited: " + amount + " | Balance: " + balance);
+        isAvailable = true;
+        notify();  // Notify the consumer
+    }
+
+    // Withdraw method (Consumer)
+    public synchronized void withdraw(double amount) {
+        while (!isAvailable) {
+            try {
+                wait();  // Wait until producer deposits
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        balance -= amount;
+        System.out.println("Withdrew: " + amount + " | Balance: " + balance);
+        isAvailable = false;
+        notify();  // Notify the producer
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount(1000);
+
+        // Producer thread (Deposits money)
+        Thread producer = new Thread(() -> {
+            account.deposit(200);
+        });
+
+        // Consumer thread (Withdraws money)
+        Thread consumer = new Thread(() -> {
+            account.withdraw(150);
+        });
+
+        producer.start();
+        consumer.start();
+    }
+}

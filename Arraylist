@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an ArrayList of type Object to store different types of objects
+        ArrayList<Object> list = new ArrayList<>();
+        
+        // Adding elements to the list
+        list.add("Hello");
+        list.add(21);
+        list.add(45.67);
+        
+        // Using a for-each loop to print each item in the list
+        for (Object item : list) {
+            System.out.println(item);
+        }
+    }
+}

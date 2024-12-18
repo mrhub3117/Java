@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Main {
+   
+    static class CustomException extends Exception {
+        public CustomException(String message) {
+            super(message);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter the first number: ");
+            int a = scanner.nextInt();
+
+            System.out.print("Enter the second number: ");
+            int b = scanner.nextInt();
+
+            if (b == 0) {
+                throw new CustomException("Division by zero is not allowed.");
+            }
+
+            int result = a / b;
+            System.out.println("The result of the division is: " + result);
+        } catch (CustomException e) {
+            System.out.println("Custom Exception: " + e.getMessage());
+            e.printStackTrace(); 
+        
+        } finally {
+            System.out.println("Execution complete.");
+            scanner.close(); 
+        }
+    }
+}

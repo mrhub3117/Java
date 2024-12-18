@@ -1,0 +1,7 @@
+import mypack.Add;
+public class Main{
+public static void main(String []b){
+Add a = new Add();
+a.sum(3,4);
+}
+}
